@@ -1,5 +1,7 @@
 package uk.co.andystabler.algorithms.sorting;
 
+import uk.co.andystabler.algorithms.util.Lists;
+
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ public class Heapsort<T extends Comparable<T>> implements Sorter<T> {
         if (data == null || data.size() < 2) return;
         buildHeap();
         for (int i = data.size() - 1; i >= 1; i--) {
-            swap(0, i);
+            Lists.swap(data, 0, i);
             heapSize--;
             heapify(0);
         }
@@ -58,20 +60,9 @@ public class Heapsort<T extends Comparable<T>> implements Sorter<T> {
             largest = r;
         // if the current node doesn't have the highest value, swap values so it does
         if (largest != i) {
-            swap(i, largest);
+            Lists.swap(data, i, largest);
             heapify(largest);
         }
-    }
-
-    /**
-     * swap values at the given indices
-     */
-    private void swap(int i, int j) {
-        if (i < 0 || i >= data.size() || j < 0 || j >= data.size())
-            return;
-        T temp = data.get(i);
-        data.set(i, data.get(j));
-        data.set(j, temp);
     }
 
     /**
