@@ -15,4 +15,7 @@ public class SortingFactory {
         new InsertionSort<T>(data).sort();
     }
 
+    public static <T extends Comparable<T>> void quicksort(List<T> data) {
+        new Quicksort<T>(data).sort();
+    }
 }
