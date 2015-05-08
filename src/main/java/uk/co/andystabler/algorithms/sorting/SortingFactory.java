@@ -8,14 +8,11 @@ import java.util.List;
 public class SortingFactory {
 
     public static <T extends Comparable<T>> void heapsort(List<T> data) {
-        //TODO
+        new Heapsort<T>(data).sort();
     }
 
     public static <T extends Comparable<T>> void insertionSort(List<T> data) {
-        new InsertionSort<T>().sort(data);
+        new InsertionSort<T>(data).sort();
     }
 
-    public static <T extends Comparable<T>> void Heapsort(List<T> data) {
-        //TODO
-    }
 }
