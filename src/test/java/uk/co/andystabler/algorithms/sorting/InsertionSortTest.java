@@ -45,9 +45,17 @@ public class InsertionSortTest {
     }
 
     @Test
-    public void TheeStrings_sorted() throws Exception {
+    public void ThreeStrings_sorted() throws Exception {
         List<String> data = Arrays.asList("Max", "Barney", "Andy", "Misty");
         List<String> sorted = Arrays.asList("Andy", "Barney", "Max", "Misty");
+        SortingFactory.insertionSort(data);
+        Assert.assertEquals(sorted, data);
+    }
+
+    @Test
+    public void ThreeInts_sorted() throws Exception {
+        List<Integer> data = Arrays.asList(5,4,3,1,2);
+        List<Integer> sorted = Arrays.asList(1,2,3,4,5);
         SortingFactory.insertionSort(data);
         Assert.assertEquals(sorted, data);
     }
