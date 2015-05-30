@@ -16,7 +16,6 @@ public class InsertionSort<T extends Comparable<T>> implements Sorter<T> {
 
     public void sort() {
         if (data == null || data.size() < 2) return;
-        System.out.println(data);
         for (int j = 1; j < data.size(); j++) {
             T key = data.get(j);
             // put data[key] into sorted list data[0 ... j-1]
