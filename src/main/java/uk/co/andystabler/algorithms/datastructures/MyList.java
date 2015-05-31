@@ -21,6 +21,14 @@ public interface MyList<T> {
     boolean remove(T data);
 
     /**
+     * Removes the element at the given index from the list
+     *
+     * @param pos the index to remove the data from
+     * @return the data at the index
+     */
+    T remove(int pos);
+
+    /**
      * Searches for an element.
      *
      * @param data the dat to search for
@@ -47,12 +55,12 @@ public interface MyList<T> {
 
     /**
      * @param data the data to search for
-     * @return the index of the data, or -1 if it was not found
+     * @return the index of the first occurence of the data, or -1 if it was not found
      */
     int index(T data);
 
     /**
-     * Inserts an element at the given index
+     * Inserts an element at the given index.
      *
      * @param index the index to add data
      * @param data  the data to add to the list
@@ -65,12 +73,4 @@ public interface MyList<T> {
      * @return the last element in the list
      */
     T pop();
-
-    /**
-     * Removes the element at the given index from the list
-     *
-     * @param pos the index to remove the data from
-     * @return the data at the index
-     */
-    T pop(int pos);
 }
