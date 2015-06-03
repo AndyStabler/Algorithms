@@ -38,4 +38,8 @@ public class MyPriorityQueue<T> implements MyQueue<T> {
         if (end < 0) throw new IllegalStateException("Queue empty!");
         return (T) queue[end--];
     }
+
+    public int size() {
+        return end + 1;
+    }
 }
