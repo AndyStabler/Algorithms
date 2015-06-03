@@ -12,4 +12,6 @@ public interface MyQueue<T> {
     void offer(T data);
 
     T poll();
+
+    int size();
 }
