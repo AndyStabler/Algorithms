@@ -30,7 +30,7 @@ public class MyPriorityQueueTest {
 
         @Test
         public void notEmptyPollEmpty_True() {
-            MyQueue<Integer> queue = new MyPriorityQueue<>(3);
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
             queue.offer(4);
             queue.poll();
             Assert.assertTrue(queue.isEmpty());
@@ -38,7 +38,7 @@ public class MyPriorityQueueTest {
 
         @Test
         public void notEmptyPollNotEmpty_False() {
-            MyQueue<Integer> queue = new MyPriorityQueue<>(3);
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
             queue.offer(4);
             queue.offer(2);
             queue.poll();
@@ -56,7 +56,7 @@ public class MyPriorityQueueTest {
 
         @Test
         public void oneElementInList_CorrectValueReturned() {
-            MyQueue<Integer> queue = new MyPriorityQueue<>(3);
+            MyQueue<Integer> queue = new MyPriorityQueue<>(1);
             queue.offer(5);
             int value = queue.peek();
             Assert.assertEquals(5, value, 0);
@@ -64,7 +64,7 @@ public class MyPriorityQueueTest {
 
         @Test
         public void twoElementsInList_CorrectValueReturned() {
-            MyQueue<Integer> queue = new MyPriorityQueue<>(3);
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
             queue.offer(5);
             queue.offer(2);
             int value = queue.peek();
@@ -73,11 +73,79 @@ public class MyPriorityQueueTest {
     }
 
     public static class Offer {
+        @Test
+        public void emptyQueue_ElementAdded() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(1);
+            queue.offer(5);
+            Assert.assertEquals(5, queue.peek(), 0);
+        }
 
+        @Test
+        public void oneElementInQueue_ElementAdded() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
+            queue.offer(5);
+            queue.offer(1);
+            Assert.assertEquals(1, queue.peek(), 0);
+        }
+
+        @Test(expected = IllegalStateException.class)
+        public void fullQueue_IllegalStateException() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
+            queue.offer(5);
+            queue.offer(1);
+            queue.offer(3);
+        }
     }
 
     public static class Poll {
 
+        @Test(expected = IllegalStateException.class)
+        public void emptyQueue_IllegalStateException() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
+            queue.poll();
+            Assert.assertEquals(1, queue.peek(), 0);
+        }
+
+        @Test
+        public void oneElementInQueue_EmptyQueue() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(1);
+            queue.offer(5);
+            queue.poll();
+            Assert.assertEquals(0, queue.size(), 0);
+        }
+
+        @Test(expected = IllegalStateException.class)
+        public void oneElementInQueuePollTwice_IllegalStateException() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(1);
+            queue.offer(5);
+            queue.poll();
+            queue.poll();
+        }
+    }
+
+    public static class size {
+
+        @Test
+        public void emptyQueue_Zero() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
+            Assert.assertEquals(0, queue.size(), 0);
+        }
+
+        @Test
+        public void oneElementInQueue_One() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(1);
+            queue.offer(5);
+            Assert.assertEquals(1, queue.size(), 0);
+        }
+
+        @Test
+        public void twoElementInQueueRemoveOne_One() {
+            MyQueue<Integer> queue = new MyPriorityQueue<>(2);
+            queue.offer(2);
+            queue.offer(5);
+            queue.poll();
+            Assert.assertEquals(1, queue.size(), 0);
+        }
     }
 
 }
